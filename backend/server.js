@@ -28,7 +28,7 @@ const io = new Server(httpServer, {
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://quantra.vercel.app',
+  'https://quantra-gamma.vercel.app',
 ]
 
 app.use(cors({
