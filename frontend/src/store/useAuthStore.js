@@ -9,10 +9,10 @@ const useAuthStore = create(
       setAuth: (token, user) => set({ token, user }),
       logout: () => {
         set({ token: null, user: null })
-        localStorage.removeItem('tradex_token')
+        localStorage.removeItem('quantra_token')
       },
     }),
-    { name: 'tradex-auth' }
+    { name: 'quantra-auth' }
   )
 )
 

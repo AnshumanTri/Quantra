@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 
 // Attach JWT token to every request automatically
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('tradex_token')
+  const token = localStorage.getItem('quantra_token')
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
@@ -18,7 +18,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('tradex_token')
+      localStorage.removeItem('quantra_token')
       window.location.href = '/login'
     }
     return Promise.reject(error)

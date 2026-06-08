@@ -13,7 +13,7 @@ import Chart from './pages/Chart'
 import NotFound from './pages/NotFound'
 
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('tradex_token')
+  const token = localStorage.getItem('quantra_token')
   return token ? children : <Navigate to="/login" replace />
 }
 
