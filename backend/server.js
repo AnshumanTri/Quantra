@@ -35,9 +35,16 @@ const io = new Server(httpServer, {
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (mobile apps, Postman, curl)
+    if (!origin) return callback(null, true)
+
+    // Log the origin so we can see exactly what's being blocked
+    console.log('Request from origin:', origin)
+
+    if (allowedOrigins.includes(origin)) {
       callback(null, true)
     } else {
+      console.log('BLOCKED origin:', origin)
       callback(new Error('Not allowed by CORS'))
     }
   },
