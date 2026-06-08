@@ -17,6 +17,12 @@ const app = express()
 const httpServer = createServer(app)
 const PORT = process.env.PORT || 5000
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://quantra-gamma.vercel.app',
+]
+
+
 // ─── Socket.IO setup ─────────────────────────────────────
 const io = new Server(httpServer, {
   cors: {
@@ -26,10 +32,6 @@ const io = new Server(httpServer, {
   },
 })
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://quantra-gamma.vercel.app',
-]
 
 app.use(cors({
   origin: (origin, callback) => {
